@@ -1,4 +1,4 @@
-import libraries.keyboard
+import lib.keyboard
 import smtplib
 from threading import Timer
 from datetime import datetime
