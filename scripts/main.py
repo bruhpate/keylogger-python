@@ -1,8 +1,4 @@
-from venv import create
 import functions
-import smtplib
-from threading import Timer
-from datetime import datetime
 
 logsPath = "scripts/logs/"
 
