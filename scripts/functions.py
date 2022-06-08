@@ -10,4 +10,5 @@ def recording():
 #     return len(os.listdir(dir))
 
 def calcualteDataAndHour():
-    return (datetime.year + '/' + datetime.month + '/' + datetime.day + ' / ' + datetime.hour + '/' + datetime.minute + '/' + datetime.second + ".txt")    
+    tempTime = datetime.now()
+    return str(tempTime.strftime("%Y-%m-%d %H:%M:%S"))

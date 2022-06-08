@@ -8,10 +8,10 @@ logsFolder = "/logs/"
 
 tempLog = functions.recording()
 
-#tempLogName = functions.calcualteDataAndHour()
+tempLogName = functions.calcualteDataAndHour()
 
-newLog = open("/logs/"+str(2), "w")
-newLog.write(tempLog)
+newLog = open("scripts/logs/"+str(tempLogName), "w")
+newLog.write(str(tempLog))
 newLog.close()
 
 
