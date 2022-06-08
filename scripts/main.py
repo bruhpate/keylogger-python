@@ -13,5 +13,3 @@ tempLogName = functions.calcualteDataAndHour()
 newLog = open("scripts/logs/"+str(tempLogName), "w")
 newLog.write(str(tempLog))
 newLog.close()
-
-
