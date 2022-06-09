@@ -3,10 +3,8 @@ from datetime import datetime
 import os
 
 def checkLogsPath(path):
-    os.path.exists(path)
-        
-
-
+    if os.path.exists(path) != True:
+        os.mkdir(path)
 
 def recording():
     return keyboard.record(until=('escape + shift'))
