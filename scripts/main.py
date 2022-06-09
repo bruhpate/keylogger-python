@@ -1,11 +1,18 @@
 import functions
 
-logsPath = "scripts/logs/"
+def main():
+    logsPath = "scripts/logs/"
 
-tempLog = functions.recording()
+    tempLog = functions.recording()
 
-tempLogName = functions.calcualteDataAndHour()
+    tempLogName = functions.calcualteDataAndHour()
 
-newLog = open(logsPath+tempLogName, "w")
-newLog.write(str(tempLog))
-newLog.close()
+    functions.writeToFile(logsPath,tempLogName,tempLog)
+
+
+
+
+##########################
+if __name__== "__main__":
+   main()                
+##########################   
