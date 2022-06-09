@@ -5,7 +5,6 @@
 🇮🇹: keylogger creato per divertimento e per imparare python, non mi prendo nessuna responsabilità
 
 
-external libraries used:
+# External libraries used:
 
-# Keyboard : 
-https://github.com/boppreh/keyboard
+[Keyboard](https://github.com/boppreh/keyboard)
