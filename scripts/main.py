@@ -10,7 +10,7 @@ def main():
 
     tempLogName = functions.calcualteDataAndHour()      #from date and hour create the new file name where storage the output
 
-    functions.writeToFile(logsPath,tempLogName,tempLog) #write into a new file the output 
+    functions.writeToFile(logsPath,tempLogName+".txt",tempLog) #write into a new file the output 
 
 
 #########################
