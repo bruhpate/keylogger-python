@@ -1,7 +1,8 @@
 import functions
 
 def main():
-    logsPath = "scripts/logs/"  #logs path where output is stored
+    
+    logsPath = "logs/"  #logs path where output is stored
 
     functions.checkLogsPath(logsPath)   #check if the output storage is existing
 
@@ -10,8 +11,6 @@ def main():
     tempLogName = functions.calcualteDataAndHour()      #from date and hour create the new file name where storage the output
 
     functions.writeToFile(logsPath,tempLogName,tempLog) #write into a new file the output 
-
-
 
 
 #########################

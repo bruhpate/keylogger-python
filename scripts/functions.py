@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 def checkLogsPath(path):
-    if os.path.exists(path) != True:
+    if os.path.exists(path) == False:
         os.mkdir(path)
 
 def recording():
