@@ -11,7 +11,7 @@ def recording():
 
 def calcualteDataAndHour():
     tempTime = datetime.now()
-    return str(tempTime.strftime("%Y-%m-%d %H:%M:%S"))
+    return str(tempTime.strftime("%Y-%m-%d %H.%M.%S"))
 
 def writeToFile(lPath, lName, l):
     newLog = open(lPath+lName, "w")
