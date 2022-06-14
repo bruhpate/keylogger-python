@@ -12,7 +12,7 @@ Se hai scaricato il file keylogger.exe, ti basterà eseguirlo per avviarlo, una 
 
 Se invece hai clonato il repository e vuoi testare il software direttamente nel repository locale, ti basterà spostarti nella cartella 'scripts'.
 
-e aggiornare python all'ultima versione da [qua](https://www.python.org/downloads/) 
+e aggiornare python all'ultima versione da [qua](https://www.python.org/downloads/ 'Python download page') 
 
 Invece per eseguire il programma ti basterà lanciare questo comando in un terminale, su linux:
 ```sh
@@ -27,7 +27,7 @@ $ python3 main.py
 
 ## Download the .exe for Windows 10/11
 
-[Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe)
+[Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe 'Download the exe')
 
 ## Generate the .exe
 🇮🇹:
@@ -35,7 +35,7 @@ $ python3 main.py
 ```sh
 $ pip --version
 ```
-* Se non è installato, aggiorna o reinstalla python da [qua](https://www.python.org/downloads/) 
+* Se non è installato, aggiorna o reinstalla python da [qua](https://www.python.org/downloads/ 'Python download page') 
 
 2. Installa Pyinstaller (estensione per creare eseguibili da codice sorgente):
 ```sh
@@ -54,6 +54,6 @@ $ pyinstaller --onefile -w main.py
 
 ## External libraries used (already imported in the repo):
 
-[Keyboard](https://github.com/boppreh/keyboard)
+[Keyboard](https://github.com/boppreh/keyboard 'Keyboard')
 
 
