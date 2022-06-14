@@ -10,11 +10,11 @@
 
 Se hai scaricato il file keylogger.exe, ti basterà eseguirlo per avviarlo, una volta avviato creerà una cartella nello stesso percorso in cui è stato avviato chiamata "logs" dove conserverà tutti gli input da tastiera, ogni volta che si preme la barra spaziatrice il programma si occuperà di creare il file.csv una prima volta, chiamato come la data e l'ora, esempio: "1970-12-31 23.59.59", ed ogni volta che il tasto spazio viene premuto, il file si aggiornerà con i nuovi input ricevuti da tastiera.
 
-Se invece hai clonato il repository e vuoi testare il software direttamente nel repository locale, ti basterà spostarti nella cartella 'scripts'.
+Se invece hai clonato il repository e vuoi testare il software direttamente nel repository locale, ti basterà spostarti nella cartella 'scripts', e aggiornare python all'ultima versione da [qua](https://www.python.org/downloads/ 'Python download page') 
 
-e aggiornare python all'ultima versione da [qua](https://www.python.org/downloads/ 'Python download page') 
+Invece per eseguire il programma ti basterà lanciare questo comando in un terminale.
 
-Invece per eseguire il programma ti basterà lanciare questo comando in un terminale, su linux:
+su linux:
 ```sh
 $ sudo python3 main.py
 ```
