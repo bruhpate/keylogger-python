@@ -28,7 +28,7 @@ $ sudo dnf update
 
 Invece per eseguire il programma ti basterà lanciare questo comando in un terminale:
 ```sh
-$ sudo python3.9 main.py
+$ sudo python3 main.py
 ```
 
 ## Deleting logs file
