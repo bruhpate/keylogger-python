@@ -4,7 +4,7 @@
 
 🇮🇹: Keylogger creato per divertimento e per imparare python.
 
-# Instructions (soon in english too):
+## Instructions (soon in english too):
 
 🇮🇹: **NON SERVONONO I PERMESSI DI AMMINISTRATORE SU WINDOWS, SU LINUX INVECE SI**.
 
@@ -25,11 +25,19 @@ $ python3 main.py
 ```
 
 
-# Download the .exe for Windows 10/11
+## Download the .exe for Windows 10/11
 
 [Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe)
 
-# External libraries used (already imported in the repo):
+## Generate the .exe
+🇮🇹:
+1. Controlla se pip è installto (gestore pacchetti di python):
+```sh
+$ pip --version
+```
+⋅⋅* Se non è installato reinstall python o aggiornalo. 
+
+## External libraries used (already imported in the repo):
 
 [Keyboard](https://github.com/boppreh/keyboard)
 
