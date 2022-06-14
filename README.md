@@ -48,6 +48,7 @@ $ pyinstaller --onefile -w main.py
 * '-w' significa che all' avvio non si aprirà nessun terminale
 
 4. Cancella la cartella 'build' e il file 'main.spec'
+
 5. Troverai l'eseguibile  nella cartella 'dist' e lo potrai esportare dove preferisci
 
 
