@@ -75,7 +75,7 @@ $ sudo rm -rf logs/
 
 [Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe)
 
-# External libraries used (already installed in the repo):
+# External libraries used (already imported in the repo):
 
 [Keyboard](https://github.com/boppreh/keyboard)
 
