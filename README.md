@@ -24,41 +24,6 @@ su windows:
 $ python3 main.py
 ```
 
-## Deleting logs file
-
-🇮🇹: Se stai cercando di rimuovere un file di log dalla cartella logs/ noterai che ti sara impossibile se non sei amministratore in quel momento, questo perchè su linux il programma va avviato come amministratore, e quindi anche i file creati saranno creati come amministratore.
-
-Quindi innanzi tutto, se ci trovimamo nella cartella di base del repositorty, spostiamoci nella cartella logs.
-
-### Removing only one file
-
-🇮🇹: Per rimuovere un solo file dalla cartella logs ti basterà lanciare:
-
-```sh
-$ sudo rm 'nome file.csv'
-```
-
-### Removing all file
-
-🇮🇹: Per rimuovere tutti i file dalla cartella logs ti basterà lanciare:
-
-```sh
-$ sudo rm *
-```
-
-### Removing the logs folder
-
-🇮🇹: Per rimuovere la cartella logs ti basterà lanciare:
-
--1 (solo se ti trovi nella cartella logs, altrimenti salta questo passaggio):
-```sh
-$ cd ..
-```
-
--2 (una volta che ti trovi nella cartella scripts):
-```sh
-$ sudo rm -rf logs/
-```
 
 # Download the .exe for Windows 10/11
 
