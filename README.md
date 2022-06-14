@@ -45,7 +45,7 @@ $ pip install pyinstaller
 ```sh
 $ pyinstaller --onefile -w main.py
 ```
-* '-w' significa che all' avvio non si aprirà nessun terminale
+   * '-w' significa che all' avvio non si aprirà nessun terminale
 
 4. Cancella la cartella 'build' e il file 'main.spec'
 
