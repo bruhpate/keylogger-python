@@ -37,6 +37,8 @@ $ pip --version
 ```
  * Se non è installato, aggiorna o reinstalla python da [qua](https://www.python.org/downloads/) 
 
+2. Installa Pyinstaller (estensione per creare eseguibili da codice sorgente)
+
 ## External libraries used (already imported in the repo):
 
 [Keyboard](https://github.com/boppreh/keyboard)
