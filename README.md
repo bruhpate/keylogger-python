@@ -16,9 +16,14 @@ $ cd scripts/
 ```
 e aggiornare python all'ultima versione da [qua](https://www.python.org/downloads/) 
 
-Invece per eseguire il programma ti basterà lanciare questo comando in un terminale:
+Invece per eseguire il programma ti basterà lanciare questo comando in un terminale, su linux:
 ```sh
 $ sudo python3 main.py
+```
+
+su windows:
+```sh
+$ python3 main.py
 ```
 
 ## Deleting logs file
