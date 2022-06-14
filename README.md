@@ -35,7 +35,7 @@ $ python3 main.py
 ```sh
 $ pip --version
 ```
-Se non è installato reinstall python o aggiornalo. 
+⋅⋅⋅Se non è installato reinstall python o aggiornalo. 
 
 ## External libraries used (already imported in the repo):
 
