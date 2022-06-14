@@ -4,7 +4,7 @@
 
 🇮🇹: Keylogger creato per divertimento e per imparare python
 
-# Instructions:
+# Instructions (soon in english too):
 
 🇮🇹: **NON SERVONONO I PERMESSI DI AMMINISTRATORE SU WINDOWS, SU LINUX INVECE SI**.
 
