@@ -35,7 +35,7 @@ $ python3 main.py
 ```sh
 $ pip --version
 ```
- * Se non è installato, aggiorna o reinstalla python da [qua](https://www.python.org/downloads/) 
+   * Se non è installato, aggiorna o reinstalla python da [qua](https://www.python.org/downloads/) 
 
 2. Installa Pyinstaller (estensione per creare eseguibili da codice sorgente)
 
