@@ -49,7 +49,7 @@ $ pyinstaller --onefile -w main.py
 
 4. Cancella la cartella 'build' e il file 'main.spec' (opzionale)
 
-5. Troverai l'eseguibile  nella cartella 'dist' e lo potrai esportare dove preferisci
+5. Troverai l'eseguibile  nella cartella 'dist' e lo potrai esportare dove preferisci (windows defender potrebbe infastidire l'operazione)
 
 
 ## External libraries used (already imported in the repo):
