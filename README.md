@@ -2,7 +2,7 @@
 - [KeyLogger](#KeyLogger)
 - [Instructions](#Instructions)
 - [Download Windows](#Download-the-.exe-for-Windows-10/11)
-- [Libraries](#External-libraries-used:)
+- [Libraries](#External-libraries-used)
 
 
 # KeyLogger
