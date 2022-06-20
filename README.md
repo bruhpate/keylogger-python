@@ -1,5 +1,4 @@
 # KeyLogger
-🇮🇹: Keylogger creato per divertimento e per imparare python.
 
 ## Istruzioni (soon in english too):
 
@@ -31,7 +30,6 @@ Se si lancia il programma da terminale, non è necessario che l'input sia scritt
 [Download](https://github.com/bruhpate/KeyLogger/raw/main/scripts/keylogger.exe 'Download the exe')
 
 ## Generare il file .exe
-🇮🇹:
 1. Controlla se pip è installto (gestore pacchetti di python):
 ```sh
 $ pip --version
