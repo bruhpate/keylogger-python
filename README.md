@@ -12,12 +12,7 @@ Invece per eseguire il programma ti basterà lanciare questo comando in un termi
 
 su linux:
 ```sh
-$ sudo python3 main.py
-```
-
-su windows:
-```sh
-$ python3 main.py
+# python3 main.py
 ```
 
 ### Nota bene che:
