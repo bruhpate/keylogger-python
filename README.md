@@ -22,7 +22,7 @@ Se si lancia il programma da terminale, non è necessario che l'input sia scritt
 
 ## Scarica il file .exe per Windows 10/11
 
-[Download](https://github.com/bruhpate/keylogger-python/raw/main/scripts/keylogger.exe 'Download the exe')
+[Download](https://github.com/bruhpate/keylogger-python/raw/main/keylogger.exe 'Download the exe')
 
 ## Generare il file .exe
 1. Controlla se pip è installto (gestore pacchetti di python):
