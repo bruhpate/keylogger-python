@@ -1,6 +1,6 @@
 # KeyLogger
 
-## Istruzioni (soon in english too):
+## Istruzioni:
 
 **NON SERVONONO I PERMESSI DI AMMINISTRATORE SU WINDOWS, SU LINUX INVECE SI**.
 
