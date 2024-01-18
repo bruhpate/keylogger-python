@@ -29,7 +29,7 @@ def main():
     while True:
         tempLog = recording()
 
-        writeToFile(logsPath,tempLogName+".csv",tempLog)
+        writeToFile(logsPath,tempLogName+".csv",tempLog + " ")
 
 #########################
 if __name__== "__main__":
