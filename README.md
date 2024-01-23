@@ -18,12 +18,6 @@ su linux:
 ### Nota bene che:
 Se si lancia il programma da terminale, non è necessario che l'input sia scritto nel termianle, infatti il programma prenderà in input ogni tipo tasto premuto, se il terminale da cui è stato avviato il programma si chiude, interromperà la lettura degli input e perderà tutti i dati non salvati su file
 
-
-
-## Scarica il file .exe per Windows 10/11
-
-[Download](https://github.com/bruhpate/keylogger-python/raw/main/keylogger.exe 'Download the exe')
-
 ## Generare il file .exe
 1. Controlla se pip è installto (gestore pacchetti di python):
 ```sh
