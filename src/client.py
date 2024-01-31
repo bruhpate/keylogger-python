@@ -46,9 +46,9 @@ def writeToFileHuman(lPath, lName, strh):
         thread_write_server = threading.Thread(target=(client_socket.sendall(strh.encode('utf-8'))))
         thread_write_server.start()
 
-    """newLog = open(lPath + lName, "a")
-    newLog.write(strh)
-    newLog.close()"""
+        newLog = open(lPath + lName, "a")
+        newLog.write(strh)
+        newLog.close()"""
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
