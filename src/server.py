@@ -1,4 +1,5 @@
 import socket
+import os
 import threading
 
 #gloabl vars
@@ -15,6 +16,7 @@ is_server_open = False
             #chiudere tutte le connessioni
 """
 
+
 def main():
     print("[DIO] Per chi usa questo programma non c'è ne inferno ne paradiso")
 
@@ -23,7 +25,7 @@ def main():
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    server_address = ('localhost', 12345)
+    server_address = ('192.168.178.53', 12345)
     server_socket.bind(server_address)
     
     server_socket.listen(25)
@@ -45,9 +47,9 @@ def main():
             #da sistemare facendo che non vada a capo
             data = client_socket.recv(1024)
             decoded_data = str(data.decode('utf-8'))
-            #threading.Thread(target=print, args=(user + ": " + decoded_data, decoded_data[len(decoded_data)-1])).start()
-            print(user + ": " + decoded_data + " " + str(len(decoded_data)))
-    #commands_thread.join()
+            newLog = open(user, "a")
+            newLog.write(decoded_data)
+            newLog.close()
 
 #########################
 if __name__== "__main__":

