@@ -6,7 +6,7 @@ import getpass
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
-server_address = ('192.168.178.90', 12345)
+server_address = ('localhost', 12345)
 client_socket.connect(server_address)
 client_socket.sendall(str(getpass.getuser()).encode())
 
