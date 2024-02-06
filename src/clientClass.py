@@ -1,7 +1,7 @@
 from datetime import datetime 
 from socket import socket 
 class Client:
-    def __init__(self, socket, nome, indirizzo):
+    def __init__(self, socket : socket, nome : str, indirizzo : str):
         self.clientSocket = socket
         self.nome = nome
         self.indirizzo = indirizzo
@@ -14,6 +14,3 @@ class Client:
     
     def indirizzo(self) -> str:
         return self.indirizzo
-    
-    def nomeOutput(self) -> str:
-        return self.indirizzo(self) + str(datetime.now().strftime("%Y-%m-%d %H.%M.%S"))
