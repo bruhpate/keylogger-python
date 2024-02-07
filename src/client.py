@@ -22,8 +22,8 @@ def writeToFileRaw(lPath, lName, l):
     newLog.close()
 
 def rispondiServer():
-    data = client_socket.recv()
-    data.encode()
+    while evento.is_set() == False:
+        client_socket.recv(1024)
 
 def writeToFileHuman(lPath, lName, strh):
     if strh.find("down") != -1:   
@@ -60,6 +60,11 @@ def writeToFileHuman(lPath, lName, strh):
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
     logsPath = "logs/"
+
+    thread_rispondi= threading.Thread(target=rispondiServer)
+    thread_rispondi.daemon=True
+    thread_rispondi.start()
+    
 
     while evento.is_set() == False:
         tempLog = recording()

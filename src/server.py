@@ -7,7 +7,6 @@ from clientClass import Client
 
 #gloabl vars
 lista_client = list()
-is_server_open=False
 evento = threading.Event()
 
 def aspettaClient(server_socket : socket.socket):
@@ -23,6 +22,10 @@ def aspettaClient(server_socket : socket.socket):
         
         t_client = threading.Thread(target=ascoltaClient, args=(nuovo_client,))
         t_client.start()
+
+        t_verifica_collegamento = threading.Thread(target=verificaCollegamento, args=(nuovo_client,))
+        t_verifica_collegamento.start()
+
         lista_thread_client.append(t_client)
     for i in lista_thread_client:
         print("[SERVER]","chiusura di tutti i thread")
@@ -35,13 +38,15 @@ def ascoltaClient(client : Client):
     print("[SERVER] Si è connesso: " + str(client.nome))
     client_socket=client.clientSocket
     nomeOutput = client.nome + "-" + str(datetime.now().strftime("%Y-%m-%d %H.%M.%S"))
-    while evento.is_set() == False:
-        data = client_socket.recv(1024)
-        decoded_data = str(data.decode('utf-8'))
-        newLog = open(nomeOutput, "a")
-        newLog.write(decoded_data)
-        newLog.close()
-    print("[SERVER]",client.nome,"non collegato, chiusura thread")
+    while isVivo(client):
+        try:
+            data = client_socket.recv(1024)
+            decoded_data = str(data.decode('utf-8'))
+            newLog = open(nomeOutput, "a")
+            newLog.write(decoded_data)
+            newLog.close()
+        except:
+            print(client.nome,"si è disconesso")
         
 def listaClientToString():
     count = 1
@@ -59,14 +64,14 @@ def rimuoviTuttiIClient():
     for i in lista_client:
         lista_client.remove(i)
 
-def verificaCollegamento():
-    while evento.is_set() == False:
-        for i in lista_client:
-            try:
-                i.sendall("a")
-            except:
-                lista_client.remove(i)
-                print(i.nome,"si è disconesso")
+def verificaCollegamento(client : Client):
+    while isVivo(client):
+        try:
+            client.clientSocket.sendall('a'.encode())
+        except:
+            client.clientSocket.close()
+            lista_client.remove(client)
+            break
         time.sleep(15)        
 
 def main():
@@ -78,7 +83,6 @@ def main():
     
     server_socket.listen(25)
 
-    is_server_open = True
     print("[SERVER] Il server è in ascolto su {}:{}".format(*server_address))
 
     t_aspetta_client = threading.Thread(target=aspettaClient, args=(server_socket,))
@@ -95,6 +99,7 @@ def main():
             rimuoviTuttiIClient()
             server_socket.close()
             print("Server chiuso")
+        #if     
 #########################
 if __name__== "__main__":
    main()                
