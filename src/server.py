@@ -14,7 +14,9 @@ def aspettaClient(server_socket : socket.socket):
     lista_thread_client = list()
     while evento.is_set() == False:
         client_socket, client_address = server_socket.accept()
+
         print("[SERVER] Connessione accettata da:", client_address)
+
         nome_client = client_socket.recv(1024).decode()
         nuovo_client = Client(client_socket, nome_client, client_address)
         lista_client.append(nuovo_client)
@@ -24,7 +26,8 @@ def aspettaClient(server_socket : socket.socket):
         lista_thread_client.append(t_client)
     for i in lista_thread_client:
         print("[SERVER]","chiusura di tutti i thread")
-        lista_thread_client.remove(i)    
+        i.join()
+        lista_thread_client.remove(i)
         
 def ascoltaClient(client : Client):
     #thread_io : threading.Thread, da inserire come argomento
@@ -78,7 +81,9 @@ def main():
     is_server_open = True
     print("[SERVER] Il server è in ascolto su {}:{}".format(*server_address))
 
-    threading.Thread(target=aspettaClient, args=(server_socket,)).start()
+    t_aspetta_client = threading.Thread(target=aspettaClient, args=(server_socket,))
+    t_aspetta_client.daemon = True
+    t_aspetta_client.start()
 
     while evento.is_set() == False:
         print("[SERVER-COMMAND] >>> ", end="")
@@ -90,8 +95,6 @@ def main():
             rimuoviTuttiIClient()
             server_socket.close()
             print("Server chiuso")
-        
-
 #########################
 if __name__== "__main__":
    main()                

