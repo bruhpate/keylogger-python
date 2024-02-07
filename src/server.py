@@ -90,7 +90,6 @@ def main():
     t_aspetta_client.start()
 
     while evento.is_set() == False:
-        print("[SERVER-COMMAND] >>> ", end="")
         command = input()
         if command == "list" or command == "l":
             listaClientToString()
@@ -99,7 +98,6 @@ def main():
             rimuoviTuttiIClient()
             server_socket.close()
             print("Server chiuso")
-        #if     
 #########################
 if __name__== "__main__":
    main()                
