@@ -22,6 +22,10 @@ def writeToFileRaw(lPath, lName, l):
     newLog.write(str(l))
     newLog.close()
 
+def rispondiServer():
+    data = client_socket.recv()
+    data.encode()
+
 def writeToFileHuman(lPath, lName, strh):
     if strh.find("down") != -1:   
         if strh.find("enter") != -1:
