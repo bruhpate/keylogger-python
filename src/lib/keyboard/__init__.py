@@ -1043,26 +1043,8 @@ def record(until='escape', suppress=False, trigger_on_release=False):
     return stop_recording()
 
 def play(events, speed_factor=1.0):
-    """
-    Plays a sequence of recorded events, maintaining the relative time
-    intervals. If speed_factor is <= 0 then the actions are replayed as fast
-    as the OS allows. Pairs well with `record()`.
-
-    Note: the current keyboard state is cleared at the beginning and restored at
-    the end of the function.
-    """
-    state = stash_state()
-
-    last_time = None
-    for event in events:
-        if speed_factor > 0 and last_time is not None:
-            _time.sleep((event.time - last_time) / speed_factor)
-        last_time = event.time
-
-        key = event.scan_code or event.name
-        press(key) if event.event_type == KEY_DOWN else release(key)
-
-    restore_modifiers(state)
+    key = events.scan_code or events.name
+    press(key) if events.event_type == KEY_DOWN else release(key)
 replay = play
 
 _word_listeners = {}
