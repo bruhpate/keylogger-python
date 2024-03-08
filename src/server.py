@@ -75,7 +75,6 @@ def verificaCollegamento(client : Client):
         time.sleep(15)        
 
 def main():
-    print("[DIO] Per chi usa questo programma non c'è ne inferno ne paradiso")
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     server_address = ('localhost', 12345)

