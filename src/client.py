@@ -20,7 +20,7 @@ def recording():
     if windows:
         l = list()
         l.append(msg)
-        keyboard.play(l)
+        keyboard.play(msg)
     return msg
 
 def writeToFileRaw(lPath, lName, l):    
@@ -29,8 +29,11 @@ def writeToFileRaw(lPath, lName, l):
     newLog.close()
 
 def rispondiServer():
-    while evento.is_set() == False:
-        client_socket.recv(1024)
+    try:
+        while evento.is_set() == False:
+            client_socket.recv(1024)
+    except:
+        print("Il server è stato chiuso")
 
 def writeToFileHuman(strh):
     strh=str(strh)+"\n"
