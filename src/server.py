@@ -83,6 +83,10 @@ def main():
     server_socket.listen(25)
 
     print("[SERVER] Il server è in ascolto su {}:{}".format(*server_address))
+    print("[SERVER] Comandi: 'list' o 'l' ottieni la lista dei client connessi")
+    print("                  'close-server' o 'cs' ottieni la lista dei client connessi")
+
+
 
     t_aspetta_client = threading.Thread(target=aspettaClient, args=(server_socket,))
     t_aspetta_client.daemon = True
